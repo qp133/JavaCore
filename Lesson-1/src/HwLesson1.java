@@ -5,9 +5,10 @@ public class HwLesson1 {
 
         System.out.println(a + " + " + b + " = " + (a + b));
         System.out.println(a + " - " + b + " = " + (a - b));
+        System.out.println(b + " - " + a + " = " + (b - a));
         System.out.println(a + " * " + b + " = " + (a * b));
         System.out.println(a + " / " + b + " = " + (a / b));
-        System.out.println(a + " % " + b + " = " + (a % b));
+        System.out.println(b + " / " + a + " = " + (b / a));
 
         //So sánh giữa i++ và ++i
 //        ++i     tăng i lên rồi mới lấy i sử dụng
