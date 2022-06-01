@@ -82,5 +82,9 @@ public class Main {
         int x = 10;
         int y = 3;
         System.out.println((double)x/y);
+
+        int i = 5;
+        int j = i++;
+        System.out.println(i + " - " + j);
     }
 }
