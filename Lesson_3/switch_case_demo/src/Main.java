@@ -47,5 +47,29 @@ public class Main {
                 default:
                     System.out.println("Tháng không hợp lệ");
             }
+
+        System.out.println("Lựa chọn của bạn là: ");
+        System.out.println("1 - Xem tất cả sản phẩm");
+        System.out.println("2 - Tìm sản phẩm theo tên");
+        System.out.println("3 - Xem giỏ hàng");
+        System.out.println("0 - Thoát chương trình");
+        int x = sc.nextInt();
+        switch (x) {
+            case 1:
+                System.out.println("Danh sách sản phẩm:");
+                System.out.println("abc...xyz");
+                break;
+            case 2:
+                System.out.println("Nhập tên sản phẩm:");
+                break;
+            case 3:
+                System.out.println("Xem giỏ hàng của bạn:");
+                break;
+            case 0:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Không có lựa chọn này");
+        }
     }
 }
