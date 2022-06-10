@@ -107,7 +107,7 @@ public class Main {
 
         System.out.println();
 
-        System.out.println("Tổng 2 ma trận vừa nhập:");
+        System.out.println("Tổng 2 mảng 2 chiều:");
         int[][] sumMultiArray = new int[row][col];
         for (int j = 0; j < row; j++) {
             for (int k = 0; k < col; k++) {
