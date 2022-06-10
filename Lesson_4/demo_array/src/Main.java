@@ -55,37 +55,37 @@ public class Main {
             System.out.print(numbers[i] + "\t");
         }
 
-        // * Hiển thị phần tử tại vị trí index = 2
-//        System.out.println();
-//        System.out.println("numbers[2] = " + numbers[2]);
+//         * Hiển thị phần tử tại vị trí index = 2
+        System.out.println();
+        System.out.println("numbers[2] = " + numbers[2]);
 
-        // * Tính tổng các phần tử trong mảng
-//        int sum = 0;
-//        for (int i = 0; i < n; i++) {
-//            sum += numbers[i];      // sum = sum + numbers[i]
-//        }
-//        System.out.println("Tổng các phần tử trong mảng: " + sum);
+//         * Tính tổng các phần tử trong mảng
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += numbers[i];      // sum = sum + numbers[i]
+        }
+        System.out.println("Tổng các phần tử trong mảng: " + sum);
 
-        // * In ra màn hình các số chẵn và tổng các số đó
-//        System.out.println("Các số chẵn của mảng: ");
-//        for (int i = 0; i < n; i++) {
-//            if(numbers[i] % 2 == 0) {
-//                System.out.print(numbers[i] + "\t");
-//            }
-//
-//        }
-//        System.out.println();
-//        int sumChan = 0;
-//        for (int j = 0; j < n; j++) {
-//            sumChan += j;
-//        }
-//        System.out.println("Tổng các số chẵn là: " + sumChan);
+//         * In ra màn hình các số chẵn và tổng các số đó
+        int sumChan = 0;
+
+        System.out.println("Các số chẵn của mảng: ");
+        for (int i = 0; i < n; i++) {
+            if(numbers[i] % 2 == 0) {
+                System.out.print(numbers[i] + "\t");
+                sumChan += numbers[i];
+            }
+        }
+        System.out.println();
+        System.out.println("Tổng các số chẵn là: " + sumChan);
 
         // * Sắp xếp tăng dần
+        // Cách 1:
 //        Arrays.sort(numbers);
 //        System.out.println("Sắp xếp các phần tử tăng dần: ");
 //        System.out.println(Arrays.toString(numbers));
 
+        //Cách 2
 //        for (int i = 0; i < n; i++) {
 //            for (int j = i+1; j < n; j++) {
 //                if(numbers[i] > numbers[j]) {
@@ -104,13 +104,14 @@ public class Main {
         // * Đếm số lần "Java" xuất hiện trong mảng
         // * Nhập vào từ bàn phím chuỗi bất kỳ, kiêm tra chuỗi đó ở vị trí nào của mảng
 //        System.out.println("Nhập vào số phẩn tử của mảng: ");
-//        int n1 = sc.nextInt();
-//        String[] strArray = new String[n1];
+//        int n = sc.nextInt();
+//        String[] strArray = new String[n];
 //
 //        for (int i = 0; i < n; i++) {
 //            System.out.printf("Nhập phần tử thứ [%d]: ", i);
 //            strArray[i] = sc.next();
 //        }
+
 //
 //        System.out.println("Các phần tử trong mảng là: ");
 //        for (int i = 0; i < n; i++) {
