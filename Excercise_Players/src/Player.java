@@ -1,14 +1,15 @@
 public class Player {
     private int number;
     private String fullName;
-    private position;
+    private Enum Position;
 
     public Player() {
     }
 
-    public Player(int number, String fullName, position) {
+    public Player(int number, String fullName, Enum position) {
         this.number = number;
         this.fullName = fullName;
+        Position = position;
     }
 
     public int getNumber() {
@@ -25,6 +26,14 @@ public class Player {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public Enum getPosition() {
+        return Position;
+    }
+
+    public void setPosition(Enum position) {
+        Position = position;
     }
 
     @Override

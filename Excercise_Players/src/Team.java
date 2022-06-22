@@ -38,6 +38,8 @@ public class Team {
 
         int goalKeeper = 0;
         int defender = 0;
+        int midfielder = 0;
+        int forward = 0;
 
         //Chọn thủ môn
         while (goalKeeper <= 0) {
@@ -59,6 +61,26 @@ public class Team {
             }
         }
 
+        //Chọn MF
+        while (midfielder < mf) {
+            int rdMidfielder = rd.nextInt(23);
+            if(allPlayer.get(rdMidfielder).getPosition() == Position.MF) {
+                if(!team.contains((allPlayer.get(rdMidfielder)))) {
+                    team.add(allPlayer.get(rdMidfielder));
+                    midfielder++;
+                }
+            }
+        }
+
+        while (forward < fw) {
+            int rdForward = rd.nextInt(23);
+            if (allPlayer.get(rdForward).getPosition() == Position.FW) {
+                if (!team.contains(allPlayer.get(rdForward))) {
+                    team.add(allPlayer.get(rdForward));
+                    forward++;
+                }
+            }
+        }
         return team;
     }
 }
