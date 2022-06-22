@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentService implements IStudentService{
     public ArrayList<Student> getAllStudent() {
@@ -27,4 +29,48 @@ public class StudentService implements IStudentService{
     public void deleteStudent(ArrayList<Student> list, Student student) {
         list.remove(student);
     }
+
+    @Override
+    public void findStudentByClassroom(ArrayList<Student> list, Student student) {
+        student.getClassroom();
+    }
+
+    @Override
+    public void sortStudentByName(ArrayList<Student> list) {
+        list.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+    }
+
+    @Override
+    public void sortStudentByAge(ArrayList<Student> list) {
+        list.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getAge() - o2.getAge();
+            }
+        });
+    }
+
+    @Override
+    public void sortStudentByPoint(ArrayList<Student> list) {
+        list.sort(new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                if (o1.getPoint() - o2.getPoint() < 0) {
+                    return -1;
+                }
+                else if (o1.getPoint() == o2.getPoint()) {
+                    return 0;
+                } else {
+                    return 1;
+                }
+            }
+        });
+    }
+
+
 }

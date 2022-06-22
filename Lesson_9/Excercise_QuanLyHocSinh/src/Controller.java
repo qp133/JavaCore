@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Controller {
@@ -39,15 +40,19 @@ public class Controller {
                     break;
                 case 5:
                     System.out.println("Danh sách học sinh theo lớp:");
+                    findStudentByClassroom();
                     break;
                 case 6:
                     System.out.println("Sắp xếp theo tên:");
+                    sortStudentByName();
                     break;
                 case 7:
                     System.out.println("Sắp xếp theo tuổi:");
+                    sortStudentByAge();
                     break;
                 case 8:
                     System.out.println("Sắp xếp theo điểm:");
+                    sortStudentByPoint();
                     break;
                 case 0:
                     System.exit(0);
@@ -78,7 +83,7 @@ public class Controller {
         System.out.println("Nhập lớp:");
         String classroom = sc.nextLine();
 
-        Student newStudent = new Student(id,name,age,address,point,classroom);
+        Student newStudent = new Student(id, name, age, address, point, classroom);
 
         return newStudent;
     }
@@ -87,36 +92,67 @@ public class Controller {
         System.out.println("Nhập id học sinh:");
         int id = Integer.parseInt(sc.nextLine());
         for (Student s : listStudent) {
-            if(s.getId() == id) {
+            if (s.getId() == id) {
                 return s;
             }
         }
         return null;
 
     }
+
     public void updateStudentPoint() {
         Student fStudent = findStudentById();
-        if(fStudent != null) {
+        if (fStudent != null) {
             System.out.println(fStudent);
-        } else  {
+        } else {
             System.out.println("Không tìm thấy học sinh");
         }
         System.out.println("Nhập điểm mới:");
         double newPoint = Double.parseDouble(sc.nextLine());
 
-        service.updateStudentPoint(fStudent ,newPoint);
+        service.updateStudentPoint(fStudent, newPoint);
         System.out.println("Thông tin sau khi cập nhật: ");
         System.out.println(fStudent);
     }
 
     public void deleteStudent() {
         Student fStudent = findStudentById();
-        if(fStudent != null) {
+        if (fStudent != null) {
             System.out.println(fStudent);
-        } else  {
+        } else {
             System.out.println("Không tìm thấy học sinh");
         }
         service.deleteStudent(listStudent, fStudent);
     }
 
+    public void findStudentByClassroom() {
+        System.out.println("Nhập lớp học:");
+        String classroom = sc.nextLine();
+        for (Student s : listStudent) {
+            if (s.getClassroom().equals(classroom)) {
+                System.out.println(s);
+            }
+        }
+    }
+
+    public void sortStudentByName() {
+        service.sortStudentByName(listStudent);
+        for (Student s : listStudent) {
+            System.out.println(s);
+        }
+    }
+
+    public void sortStudentByAge() {
+        service.sortStudentByAge(listStudent);
+        for (Student s : listStudent) {
+            System.out.println(s);
+        }
+    }
+
+    public void sortStudentByPoint() {
+        service.sortStudentByPoint(listStudent);
+        for (Student s : listStudent) {
+            System.out.println(s);
+        }
+    }
 }
