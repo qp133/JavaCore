@@ -1,7 +1,8 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UserService implements IUserService{
+    static final String REGEX_EMAIL = "^(.+)@(\\S+)$";
+
     public ArrayList<User> getAllUser() {
         ArrayList<User> listUser= new ArrayList<>();
         listUser.add(new User("quang", "q123456", "quang@gmail.com",false));
@@ -18,6 +19,16 @@ public class UserService implements IUserService{
         boolean flag = false;
         for (User u : list) {
             if(u.getUsername().equals(username)) {
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
+    public boolean checkEmail(ArrayList<User> list, String email) {
+        boolean flag = false;
+        for (User u : list) {
+            if(u.getUsername().equals(email)) {
                 flag = true;
             }
         }
@@ -49,5 +60,13 @@ public class UserService implements IUserService{
         user.setPassword(newPassword);
     }
 
+    @Override
+    public void addNewUser(ArrayList<User> list, User user) {
+        list.add(user);
+    }
+
+    public boolean validateEmail(String email) {
+        return email.matches(REGEX_EMAIL);
+    }
 
 }

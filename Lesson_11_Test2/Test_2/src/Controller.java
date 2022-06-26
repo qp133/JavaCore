@@ -23,6 +23,8 @@ public class Controller {
                     loginSucceed(list);
                     break;
                 case 2:
+                    User newUser = createNewUser();
+                    service.addNewUser(list, newUser);
                     break;
                 case 0:
                     System.exit(0);
@@ -170,5 +172,42 @@ public class Controller {
                 System.out.println("Thông tin sau khi thay đổi: " + u);
             }
         }
+    }
+
+    public User createNewUser() {
+        String username;
+        boolean flag;
+        do {
+            System.out.println("Nhập username: ");
+            username = sc.nextLine();
+            flag = !checkUsername(username);
+            if (!flag) {
+                System.out.println("Username bị trùng, vui lòng nhập lại");
+            }
+        } while(!flag);
+        System.out.println("Username hợp lệ");
+
+        String email;
+        do {
+            System.out.println("Nhập Email: ");
+            email = sc.nextLine();
+            flag = checkEmail(email) ;
+
+            if (!flag) {
+                System.out.println("Email bị trùng, vui lòng nhập lại");
+            }
+        } while(!flag);
+        System.out.println("Email hợp lệ");
+
+        System.out.println("Nhập password: ");
+        String password = sc.nextLine();
+
+        boolean active = false;
+
+        return new User(username, password, email, active);
+    }
+
+    public boolean checkEmail(String email) {
+        return service.checkEmail(list, email);
     }
 }

@@ -7,5 +7,6 @@ public interface IUserService {
 
     public void updatePassword(User user, String newPassword);
 
+    public void addNewUser(ArrayList<User> list, User user);
 
 }
