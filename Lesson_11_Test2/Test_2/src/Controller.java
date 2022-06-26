@@ -12,7 +12,7 @@ public class Controller {
         sc = new Scanner(System.in);
     }
 
-    public void main() {
+    public void main(){
         while (true) {
             Util.menu();
             System.out.println("Lựa chọn của bạn là:");
@@ -21,7 +21,6 @@ public class Controller {
                 case 1:
                     Input(list);
                     loginSucceed(list);
-
                     break;
                 case 2:
                     break;
@@ -41,14 +40,15 @@ public class Controller {
         }
     }
 
-    public String Input(ArrayList<User> list) {
+    public String Input(ArrayList<User> list){
         //username input
         boolean flag;
         Scanner sc = new Scanner(System.in);
+        String username;
         do {
             String usernamePattern = "\\w+";
             System.out.print("Nhập username: ");
-            String username = sc.nextLine();
+            username = sc.nextLine();
 
             flag = username.matches(usernamePattern) && checkUsername(username);
 
@@ -57,9 +57,10 @@ public class Controller {
         System.out.println("Username hợp lệ");
 
         //password input
+        String password;
         do {
             System.out.print("Nhập password: ");
-            String password = sc.nextLine();
+            password = sc.nextLine();
 
             flag = checkPassword(password);
 
@@ -73,7 +74,15 @@ public class Controller {
                         break;
                     case 2:
                         System.out.println("Nhập email để đổi mật khẩu:");
-                        String email = sc.nextLine();
+                        String emailInput = sc.nextLine();
+                        for (User u : list) {
+                            if (emailInput.equals(u.getEmail())) {
+                                u.setActive(true);
+                                System.out.println("Đổi mật khẩu mới:");
+                                updatePassword();
+                            }
+                        }
+                        main();
                         break;
                     case 0:
                         System.exit(0);
@@ -85,6 +94,11 @@ public class Controller {
             }
         } while (!flag);
         System.out.println("Password hợp lệ");
+        for (User u : list) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
+                u.setActive(true);
+            }
+        }
         return null;
     }
 
@@ -92,54 +106,29 @@ public class Controller {
         return service.checkUsername(list, username);
     }
 
-//    public String passwordInput(ArrayList<User> list) {
-//        boolean flag;
-//        Scanner sc = new Scanner(System.in);
-//        String passwordPattern = "\\w+";
-//        System.out.print("Nhập password: ");
-//        String input = sc.nextLine();
-//
-//        flag = input.matches(passwordPattern) && checkPassword(input);
-//
-//        if (!flag) {
-//            System.out.println("Kiểm tra lại password, vui lòng nhập lại");
-//            Util.wrongPassword();
-//            int wrongPass = Integer.parseInt(sc.nextLine());
-//            switch (wrongPass) {
-//                case 1:
-//                    passwordInput(list);
-//                    break;
-//                case 2:
-//                    System.out.println("Nhập email để đổi mật khẩu:");
-//                    String email = sc.nextLine();
-//                    break;
-//                case 0:
-//                    System.exit(0);
-//                    break;
-//                default:
-//                    System.out.println("Không có lựa chọn này.");
-//                    main();
-//            }
-//        }
-//        System.out.println("Password hợp lệ");
-//        return null;
-//    }
-
     public boolean checkPassword(String password) {
         return service.checkPassword(list, password);
     }
 
-    public void loginSucceed(ArrayList<User> list) {
+    public void loginSucceed(ArrayList<User> list){
         System.out.println("Chào mừng, bạn có thể thực hiện các công việc sau:");
         Util.submenu();
         int subMenu = Integer.parseInt(sc.nextLine());
         switch (subMenu) {
             case 1:
-                System.out.println("Thay đổi username");
+                System.out.println("Thay đổi username:");
+                updateUsername();
+                loginSucceed(list);
                 break;
             case 2:
+                System.out.println("Thay đổi Email:");
+                updateEmail();
+                loginSucceed(list);
                 break;
             case 3:
+                System.out.println("Thay đổi password:");
+                updatePassword();
+                loginSucceed(list);
                 break;
             case 4:
                 System.out.println("Đăng xuất");
@@ -153,7 +142,33 @@ public class Controller {
         }
     }
 
-    public void updateUsername(User user, String newUsername) {
+    public void updateUsername() {
+        String newUsername = sc.nextLine();
+        for (User u : list) {
+            if (u.isActive()) {
+                service.updateUsername(u, newUsername);
+                System.out.println("Thông tin sau khi thay đổi: " + u);
+            }
+        }
+    }
 
+    public void updateEmail() {
+        String newEmail = sc.nextLine();
+        for (User u : list) {
+            if (u.isActive()) {
+                service.updateEmail(u, newEmail);
+                System.out.println("Thông tin sau khi thay đổi: " + u);
+            }
+        }
+    }
+
+    public void updatePassword() {
+        String newPassword = sc.nextLine();
+        for (User u : list) {
+            if (u.isActive()) {
+                service.updatePassword(u, newPassword);
+                System.out.println("Thông tin sau khi thay đổi: " + u);
+            }
+        }
     }
 }
