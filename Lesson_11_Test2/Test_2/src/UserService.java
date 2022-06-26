@@ -14,24 +14,6 @@ public class UserService implements IUserService{
         return listUser;
     }
 
-//    public String checkUsername(ArrayList<User> list) {
-//        boolean flag;
-//        Scanner sc = new Scanner(System.in);
-//        do {
-//            String usernamePattern = "\\w+";
-//            System.out.print("Nhập username: ");
-//            String input = sc.nextLine();
-//
-//            boolean check = input.matches(usernamePattern);
-//            flag = check;
-//
-//            if (!flag) System.out.println("Kiểm tra lại username, vui lòng nhập lại");
-//        } while (!flag);
-//
-//        System.out.println("Username hợp lệ");
-//        return null;
-//    }
-
     public boolean checkUsername(ArrayList<User> list, String username) {
         boolean flag = false;
         for (User u : list) {
