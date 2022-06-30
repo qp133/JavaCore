@@ -51,10 +51,11 @@ public class StaffManagement {
         }
     }
 
-    public void findStaffByGender(Staff[] arr) {
+    public void findStaffByGender(Staff[] arr, String gender) {
         int count = 0;
+        Gender.values();
         for (Staff s : arr) {
-            if (s.getGender().equals() ){
+            if (s.getGender().equals(gender) ){
                 count++;
                 System.out.println(s.getId() + " - " + s.getName() + " - " + s.getDob() + " - " + s.getGender() +
                         " - " + s.getPhoneNumber() + " - " + s.getEmail() + " - " + s.getAddress());

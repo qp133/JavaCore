@@ -12,7 +12,6 @@ import java.util.Arrays;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class Book {
     private int id;
     private String title;

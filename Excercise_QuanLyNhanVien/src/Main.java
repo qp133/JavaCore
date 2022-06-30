@@ -17,7 +17,7 @@ public class Main {
         staffM.findStaffByName(arrStaff, fName);
 
         System.out.println("Nhập giới tính nhân viên cần tìm:");
-        String Gender = sc.nextLine();
-        staffM.findStaffByName(arrStaff, Gender);
+        String gender = sc.nextLine();
+        staffM.findStaffByGender(arrStaff, gender);
     }
 }
