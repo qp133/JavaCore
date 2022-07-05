@@ -21,5 +21,8 @@ public class Main {
 
         System.out.println("Danh sách nhân viên theo giới tính NỮ:");
         staffM.listStaffByFEMALEGender(arrStaff);
+
+        System.out.println("Danh sách nhân viên có địa chỉ ở Hà Nội:");
+        staffM.findStaffByAddress(arrStaff);
     }
 }

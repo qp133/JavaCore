@@ -68,4 +68,13 @@ public class StaffManagement {
             }
         }
     }
+
+    public void findStaffByAddress(Staff[] arr) {
+        for (Staff s : arr) {
+            if (s.getAddress().contains("Hà Nội")) {
+                System.out.println(s.getId() + " - " + s.getName() + " - " + s.getDob() + " - " + s.getGender()
+                + " - " + s.getPhoneNumber() + " - " + s.getEmail() + " - " + s.getAddress());
+            }
+        }
+    }
 }
