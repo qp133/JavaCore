@@ -51,18 +51,21 @@ public class StaffManagement {
         }
     }
 
-    public void findStaffByGender(Staff[] arr, String gender) {
-        int count = 0;
-        Gender.values();
+    public void listStaffByMALEGender(Staff[] arr) {
         for (Staff s : arr) {
-            if (s.getGender().equals(gender) ){
-                count++;
+            if (s.getGender() == Gender.MALE ){
                 System.out.println(s.getId() + " - " + s.getName() + " - " + s.getDob() + " - " + s.getGender() +
                         " - " + s.getPhoneNumber() + " - " + s.getEmail() + " - " + s.getAddress());
             }
         }
-        if (count == 0) {
-            System.out.println("Không tìm thấy nhân viên này.");
+    }
+
+    public void listStaffByFEMALEGender(Staff[] arr) {
+        for (Staff s : arr) {
+            if (s.getGender() == Gender.FEMALE ){
+                System.out.println(s.getId() + " - " + s.getName() + " - " + s.getDob() + " - " + s.getGender() +
+                        " - " + s.getPhoneNumber() + " - " + s.getEmail() + " - " + s.getAddress());
+            }
         }
     }
 }

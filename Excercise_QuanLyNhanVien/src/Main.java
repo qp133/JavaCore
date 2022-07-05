@@ -16,8 +16,10 @@ public class Main {
         String fName = sc.nextLine();
         staffM.findStaffByName(arrStaff, fName);
 
-        System.out.println("Nhập giới tính nhân viên cần tìm:");
-        String gender = sc.nextLine();
-        staffM.findStaffByGender(arrStaff, gender);
+        System.out.println("Danh sách nhân viên theo giới tính NAM:");
+        staffM.listStaffByMALEGender(arrStaff);
+
+        System.out.println("Danh sách nhân viên theo giới tính NỮ:");
+        staffM.listStaffByFEMALEGender(arrStaff);
     }
 }
