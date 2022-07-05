@@ -14,6 +14,8 @@ public class LinkedListDemo {
         linkedList.add(3);
         linkedList.add(4);
 
+        System.out.println("...: " + linkedList.get(1));
+
         Iterator<Integer> itr = linkedList.iterator();
         while (itr.hasNext()) {
             System.out.println(itr.next());

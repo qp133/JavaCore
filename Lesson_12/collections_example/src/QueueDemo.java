@@ -32,7 +32,7 @@ public class QueueDemo {
         System.out.println("Phần tử đầu tiên: " + priorityQueue.peek());
 
         //Nếu danh sách không có phần tử nào => Ném ra ngoại lệ
-        System.out.println(priorityQueue.element());
+        System.out.println("-----" + priorityQueue.element());
 
         //Cũng có thể dùng offer để thêm phần tử
         //Nếu thêm thành công => True
