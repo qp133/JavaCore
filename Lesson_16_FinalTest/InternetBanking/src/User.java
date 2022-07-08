@@ -42,6 +42,10 @@ public class User {
         return accountBalance;
     }
 
+    public void setAccountBalance(int accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
     @Override
     public String toString() {
         return phoneNumber + " - " + password + " - " + accountNumber + " - " + accountBalance;

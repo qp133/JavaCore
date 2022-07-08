@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,6 +14,9 @@ public class Controller {
     }
 
     public void main() {
+        History transferHistory;
+        ArrayList<History> listHistory = new ArrayList<>();
+
         User userLogin = login();
         while (true) {
             System.out.println("Bạn có thể thực hiện các công việc:");
@@ -25,10 +29,14 @@ public class Controller {
                     break;
                 case 2:
                     //Chuyển tiền
-                    transferMoney(userLogin);
+                    transferHistory = transferMoney(userLogin);
+                    listHistory.add(transferHistory);
                     break;
                 case 3:
                     //Xem lịch sử giao dịch
+                    for (History h : listHistory) {
+                        System.out.println(h);
+                    }
                     break;
                 case 0:
                     System.exit(0);
@@ -53,18 +61,24 @@ public class Controller {
                         loginUser = u;
                         System.out.println("Đăng nhập thành công");
                         flag = false;
+                        return loginUser;
                     } else {
                         //Sai mật khẩu
                         flag = true;
                         System.out.println("Sai mật khẩu, vui lòng đăng nhập lại");
                     }
+                } else {
+                    flag = true;
+                    System.out.println("Sai số điện thoại, vui lòng đăng nhập lại");
+                    break;
                 }
             }
         }
         return loginUser;
     }
 
-    public void transferMoney(User user) {
+    public History transferMoney(User user) {
+        History transferHistory = null;
         boolean flag = true;
         while (flag) {
             System.out.println("Nhập số tài khoản nhận tiền:");
@@ -73,21 +87,31 @@ public class Controller {
                 if (u.getAccountNumber() == receiveAccountNumber) {
                     System.out.println("Nhập số tiền cần chuyển:");
                     int money = Integer.parseInt(sc.nextLine());
-                    System.out.println("Nhập mô tả:");
-                    String info = sc.nextLine();
                     int transferAccountBalance = user.getAccountBalance();
                     int receiveAccountBalance = u.getAccountBalance();
-                    if (money > 50000 && money < transferAccountBalance) {
+                    if (money > 50000 && money < transferAccountBalance - 50000) {
+                        System.out.println("Nhập mô tả:");
+                        String info = sc.nextLine();
+
                         transferAccountBalance = transferAccountBalance - money;
+                        user.setAccountBalance(transferAccountBalance);
+
                         receiveAccountBalance = receiveAccountBalance + money;
+                        u.setAccountBalance(receiveAccountBalance);
+
                         System.out.println("Tài khoản số " + user.getAccountNumber() + " vừa chuyển " + money + " VND");
                         System.out.println("Tài khoản số " + receiveAccountNumber + " vừa nhận " + money + " VND");
+                        transferHistory = new History(LocalDate.now(), info, receiveAccountNumber, money);
+                        return transferHistory;
+                    } else {
+                        //Nhập sai số tiền
+                        flag = false;
+                        System.out.println("Nhập sai số tiền, vui lòng chuyển tiền lại:");
+                        break;
                     }
-                    flag = false;
                 }
             }
         }
+        return transferHistory;
     }
-
-
 }
