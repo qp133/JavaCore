@@ -1,15 +1,11 @@
-import javax.swing.text.DateFormatter;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Random;
 
 public class Util {
     public static String formatDate(LocalDate date) {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String strDate = date.format(dateFormatter);
-        return strDate;
+        return date.format(dateFormatter);
     }
 
     private static Random generator = new Random();
