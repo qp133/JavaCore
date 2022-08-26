@@ -93,10 +93,10 @@ public class Controller {
                         System.out.println("Nhập mô tả:");
                         String info = sc.nextLine();
 
-                        transferAccountBalance = transferAccountBalance - money;
+                        transferAccountBalance -= money;
                         user.setAccountBalance(transferAccountBalance);
 
-                        receiveAccountBalance = receiveAccountBalance + money;
+                        receiveAccountBalance += money;
                         u.setAccountBalance(receiveAccountBalance);
 
                         System.out.println("Tài khoản số " + user.getAccountNumber() + " vừa chuyển " + money + " VND");
